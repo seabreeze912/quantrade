@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'quantrade.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': "quantrade",
+        'NAME': "quantrade01",
         "USER": "root",
         "PASSWORD": "",
         "HOST": 'localhost',
