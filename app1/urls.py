@@ -20,6 +20,6 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
-    url(r'strategy01/$', views.strategy01, name='strategy01'),
+    url(r'^strategy01/$', views.strategy01, name='strategy01'),
 
 ]
