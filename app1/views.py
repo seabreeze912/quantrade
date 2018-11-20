@@ -34,6 +34,18 @@ def strategy01(request):
     get_btc_daily_data()
 
     btc_daily_data = BtcDailyData.objects.all()
-    print(btc_daily_data)
 
-    return render(request, 'app1/strategy01.html', {'btc_daily_data': btc_daily_data})
+    btc_daily_data_close = BtcDailyData.objects.values_list('close')
+    btc_daily_data_close_list = []
+    for item in btc_daily_data_close:
+        btc_daily_data_close_list.append(item[0])
+
+    btc_daily_data_date = BtcDailyData.objects.values_list('dateTime')
+    btc_daily_data_date_list = []
+    for item in btc_daily_data_date:
+        btc_daily_data_date_list.append(item[0].strftime("%Y-%m-%d"))
+
+    return render(request, 'app1/strategy01.html', {'btc_daily_data': btc_daily_data,
+                                                    'btc_daily_data_close_list': btc_daily_data_close_list,
+                                                    'btc_daily_data_date_list': btc_daily_data_date_list,
+                                                    })
