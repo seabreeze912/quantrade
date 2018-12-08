@@ -78,8 +78,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': "quantrade01",
-        "USER": "root",
-        "PASSWORD": "",
+        "USER": "ryan",
+        "PASSWORD": "ryan123456",
         "HOST": 'localhost',
         'PORT': '3306'
     }
@@ -123,3 +123,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# 静态文件目录
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# 上传文件目录
+MEDIA_ROOT = os.path.join(BASE_DIR, r'static\media')

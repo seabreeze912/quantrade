@@ -1,16 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
+{% extends 'app1/base.html' %}
+{% load static from staticfiles %}
+
+
+{% block linkscript %}
+
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'home/css/home.css' %}"/>-->
+    <!--<script type="text/javascript" charset="utf-8" src="{% static 'home/js/home.js' %}" ></script>-->
+
+{% endblock linkscript %}
+
+
+{% block base %}
+
+<div>
+
     <h1> Home </h1>
     <ul>
         <li>
             <a href="/strategy01/">strategy01</a>
         </li>
+
+        <li>
+            <a href="/strategy02/">strategy02</a>
+        </li>
+
+        <li>
+            <a href="/strategy03/">strategy03</a>
+        </li>
+
     </ul>
 
-</body>
-</html>
+</div>
+
+
+{% endblock base %}

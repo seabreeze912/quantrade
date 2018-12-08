@@ -1,0 +1,96 @@
+{% extends 'app1/base.html' %}
+{% load static from staticfiles %}
+
+
+{% block linkscript %}
+
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'home/css/home.css' %}"/>-->
+    <!--<script type="text/javascript" charset="utf-8" src="{% static 'home/js/home.js' %}" ></script>-->
+    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+{% endblock linkscript %}
+
+
+{% block base %}
+    <h1>strategy02</h1>
+
+    <h1 id="result1"></h1>
+    <h1 id="result2"></h1>
+
+    <h1> {{ ret.data1 }}</h1>
+
+    <!--<script>-->
+    <!--$(document).ready(function(){-->
+        <!--function refresh(){-->
+            <!--$.getJSON("/data_fresh/", function (ret) {-->
+                <!--$('#result1').html(ret.data1);-->
+                <!--$('#result2').html(ret.data2);-->
+            <!--})-->
+        <!--}-->
+        <!--setInterval(refresh, 3000)-->
+    <!--})-->
+    <!--</script>-->
+
+
+    <div id="container" style="width: 80%;height:auto;"></div>
+
+    <script>
+
+
+        $(document).ready(function(){
+
+            var options
+            var data1 =[]
+            var data2 =[]
+
+            function refresh(){
+                $.getJSON("/data_fresh/", function (ret) {
+
+                    // data1 = data1.concat(ret.data1);
+                    // data2 = data2.concat(ret.data2);
+                    data1 = ret.data1;
+                    data2 = ret.data2;
+
+                        options = {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: null
+            },
+            xAxis: {
+                categories: data2, // x 轴分类
+                tickmarkPlacement: 'on',
+            },
+            yAxis: {
+                title: { text: null },
+                labels: { enabled: false },
+                gridLineDashStyle: 'Dash',
+            },
+            series: [{
+                name: 'BTC价格',
+                data: data1,
+            }],
+
+            legend: { enabled: false },
+            credits: { enabled: false },
+
+        };
+                            var chart = Highcharts.chart('container', options);
+
+                })
+                }
+
+        setInterval(refresh, 30);
+
+        // 图表初始化函数
+
+        })
+
+
+        // 图表配置
+
+    </script>
+
+
+
+{% endblock base %}

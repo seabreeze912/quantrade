@@ -1,0 +1,85 @@
+{% extends 'app1/base.html' %}
+{% load static from staticfiles %}
+
+
+{% block linkscript %}
+
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'home/css/home.css' %}"/>-->
+    <!--<script type="text/javascript" charset="utf-8" src="{% static 'home/js/home.js' %}" ></script>-->
+    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+{% endblock linkscript %}
+
+
+{% block base %}
+    <h1>基于OKEX期现货差寻找套利机会</h1>
+<div style="width: 80%">
+        <!-- AICoin Widget Begin -->
+    <script type="text/javascript" src="https://widget.aicoin.net.cn/chart/js/aicoin.js"></script>
+    <script type="text/javascript">
+        new AICoin.markets({
+            "symbols": [
+                "okcoinfuturesbtcquarterusd",
+                "okexbtcusdt"
+            ],
+            "columns": [
+                "degree",
+                "vol",
+                "buy",
+                "sell",
+                "hight",
+                "low"
+            ],
+            "style": "tr%7Bheight%3A34px%3B%7D",
+            "container": "markets_container",
+            "lang": "zh"
+        })
+    </script>
+</div>
+<!-- AICoin Widget End -->
+
+
+<div>
+
+    <form id="sqlfrom" method="post">
+        {% csrf_token %}
+        <input id="sqlinput" name="sqlinputname" style="width: 60%; height: 30px; background-color: #1b6d85">
+        <button id="submit" type="submit" style="width: 60%; height: 30px; background-color: #1b6d85">查询</button>
+    </form>
+
+    <pre id="sql_output" tyle="width:60%;margin-top:10px;height:100%;background-color:#fefcff; border:#d1d0ce 1px solid;" ></pre>
+
+    <script>
+
+        $(document).ready(function () {
+            $.ajaxSetup({
+                   data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+            });
+
+            $('#sqlfrom').submit(function () {
+                var input = $('#sqlinput').val();
+
+                $.ajax({
+                    type: 'POST',
+                    data: {input: input},
+                    url: '/strategy03_ajax_post_01/',
+                    cache: false,
+                    dataType: 'html',
+                    success: function (ret){
+
+                        $('#sql_output').html(ret)
+                    },
+                    error: function () {
+                        alert('false');
+                    }
+                });
+                return false;
+            });
+
+        });
+
+
+    </script>
+
+</div>
+
+{% endblock base %}
