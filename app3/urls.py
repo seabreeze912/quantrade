@@ -19,6 +19,8 @@ from . import views
 
 
 urlpatterns = [
+
     url(r'^options/gbm/$', views.gbm),
-    # url(r'^strategy03_ajax_post_01/$', views.comments_upload),
+
+
 ]

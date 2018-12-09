@@ -4,8 +4,8 @@
 
 import numpy as np
 
-from sn_random_numbers import sn_random_numbers
-from simulation_class import simulation_class
+from .sn_random_numbers import sn_random_numbers
+from .simulation_class import simulation_class
 
 
 class sqare_root_diffusion(simulation_class):

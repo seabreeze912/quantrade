@@ -2,7 +2,7 @@
 
 # constant_short_rate.py
 
-from get_year_deltas import *
+from .get_year_deltas import *
 
 
 class constant_short_rate(object):
