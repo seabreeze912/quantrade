@@ -61,9 +61,10 @@
                 $.ajax({
                     type: 'POST',
                     data: {input: input},
-                    url: '/strategy03_ajax_post_01/',
+                    url: '/strategy03_ajax_post_01/' +Math.random(),
                     cache: false,
                     dataType: 'html',
+                    async:false,
                     success: function (ret){
 
                         $('#sql_output').html(ret)
