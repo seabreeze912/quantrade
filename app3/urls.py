@@ -21,6 +21,11 @@ from . import views
 urlpatterns = [
 
     url(r'^options/gbm/$', views.gbm),
+    url(r'^options/gbm_json/$', views.gbm_json),
+    url(r'^options/gbm_json_path_data/$', views.gbm_json_path_data),
+
+
+
 
 
 ]

@@ -1,6 +1,14 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+
 import matplotlib.pyplot as plt
+import json
+import random
+import time
+import pandas as pd
+import numpy as np
+np.set_printoptions(suppress=True)
 
 
 # 衍生品分析库
@@ -12,13 +20,27 @@ from .market_environment import market_environment
 from .geometric_brownian_motion import geometric_brownian_motion
 
 
-
-
-
+# gbm网站链接
 def gbm(request):
+    return render(request, 'app3/gbm.html',)
+
+
+# 设置全局变量
+path_num = []
+path_dataframe = []
+
+# POST参数后，用于获取gbm模拟数据
+@csrf_exempt
+def gbm_json(request):
+    global path_dataframe, path_num
+
     if request.method == 'POST':
-        me_gbm = market_environment('me_gbm', dt.datetime(int(request.POST['pricing_date_y']), int(request.POST['pricing_date_m']), int(request.POST['pricing_date_d'])))
-        me_gbm.add_constant('final_date', dt.datetime(int(request.POST['final_date_y']), int(request.POST['final_date_m']),int(request.POST['final_date_d'])))
+        me_gbm = market_environment('me_gbm', dt.datetime(int(request.POST['pricing_date_y']),
+                                                          int(request.POST['pricing_date_m']),
+                                                          int(request.POST['pricing_date_d'])))
+        me_gbm.add_constant('final_date', dt.datetime(int(request.POST['final_date_y']),
+                                                      int(request.POST['final_date_m']),
+                                                      int(request.POST['final_date_d'])))
 
         me_gbm.add_constant('initial_value', float(request.POST['initial_value']))
         me_gbm.add_constant('volatility', float(request.POST['volatility']))
@@ -30,24 +52,40 @@ def gbm(request):
 
         me_gbm.add_constant('currency', str(request.POST['currency']))
 
-        # 生成低波动情况下路径
+        # 生成模拟路径，随机种子为true
         gbm = geometric_brownian_motion('gbm', me_gbm)
-        path_1 = gbm.get_instrument_values()
+        path = gbm.get_instrument_values(fixed_seed=False)
+
+        path_dataframe = pd.DataFrame(path, index=gbm.time_grid)
+        path_num = int(request.POST['paths'])
+        data = {'data': list(path[-1])}
+
+    return HttpResponse(json.dumps(data), content_type='application/json')
 
 
-        # 作图
-        # plt.figure(figsize=(8, 4))
-        # p1 = plt.plot(gbm.time_grid, path_1[:, :10], 'b')
-        # p2 = plt.plot(gbm.time_grid, path_2[:, :10], 'r-.')
-        # plt.grid(True)
-        # l1 = plt.legend([p1[0], p2[0]], ['low_volatility', 'high_volatility'], loc=2)
-        # plt.gca().add_artist(l1)
-        # plt.xticks(rotation=30)
-        # plt.savefig('gbm_test_01.jpg')
-        # plt.show()
+def gbm_json_path_data(request):
+    global path_dataframe, path_num
 
-        data = list(path_1[-1])
-        return render(request, 'app3/gbm.html', {'data': data})
-    else:
-        data = [1,2,3,4,5]
-        return render(request, 'app3/gbm.html', {'data': data})
+    # 时间转换为数列的array，并合并为[[date, value], [date, value]...]的形式
+    time_grid = np.array(list(int(time.mktime(i.timetuple()) * 1000) for i in path_dataframe.index))
+    time_grid = time_grid.reshape(time_grid.shape[0], 1)
+
+    path_num_1 = random.randint(0, path_num)
+    path = path_dataframe[path_num_1].values
+    path = path.reshape(path.shape[0], 1)
+
+    path_data = np.hstack((time_grid, path)).tolist()
+    path_data = {'path_data': path_data}
+
+    # 转换为一维列表形式
+    time_list = list(path_dataframe.index.strftime('%Y-%m-%d'))
+
+    path = path_dataframe[path_num_1].values
+    path_list = list(float('%4.2f' % i )for i in path)
+
+    path_data = {'time_list': time_list, 'path_list': path_list,}
+    print(path_data)
+
+    return HttpResponse(json.dumps(path_data), content_type='application/json')
+
+

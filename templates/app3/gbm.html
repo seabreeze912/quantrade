@@ -1,6 +1,7 @@
 {% extends 'app1/base.html' %}
 {% load static from staticfiles %}
 
+
 {% block linkscript %}
 
 <link rel="icon" href="https://static.jianshukeji.com/highcharts/images/favicon.ico">
@@ -16,9 +17,9 @@
 
 {% block base %}
 
-{#    GBM参数信息输入   #}
-<h1> 几何布朗运动模拟 </h1><br>
+<h1 style="font-size: 200%"> 几何布朗运动模拟 </h1><br>
 
+{#   ***********************  图一 : GBM模拟，绘制直方图  ******************************   #}
 <form id="gbm_params" method="post">
     {% csrf_token %}
     定价日期： <input id="pricing_date_y" name="pricing_date_y"  value=2017 style="width: 80px; height: 30px; background-color: whitesmoke">年
@@ -37,104 +38,171 @@
     路径数量： <input id="paths" name="paths" value=1000 style="width: 80px; height: 30px; background-color: whitesmoke"><br>
 
     货币种类： <input id="currency" name="currency" value='EUR' style="width: 80px; height: 30px; background-color: whitesmoke"><br>
-    <button id="submit" type="submit" style="width: 80px; height: 30px; background-color: greenyellow">模拟</button>
 </form>
 
-<div id="container" style="width: 800px; height: 400px;"></div>
+<button onclick="api_get_gbm_data();" style="background-color: #67b168">&nbsp;开始模拟&nbsp;</button>
 
-{# 提交参数信息#}
-<script>
+<div id="container_1" style="width: 800px; height: 400px;"></div>
 
-        $.ajaxSetup({
-               data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
-        });
+<script type="text/javascript">
 
-        $('#gbm_params').submit(function () {
-            var pricing_date_y = $('#pricing_date_y').val();
-            var pricing_date_m = $('#pricing_date_m').val();
-            var pricing_date_d = $('#pricing_date_d').val();
+// 直方图数据
+// 定义图表全局变量
+var chart1 = null;
 
-            var final_date_y = $('#final_date_y').val();
-            var final_date_m = $('#final_date_m').val();
-            var final_date_d = $('#final_date_d').val();
+// 绘制直方图
+$(document).ready(function() {
+    chart1 = Highcharts.chart('container_1', {
+    chart1: {
+        events: {
+            load: api_get_gbm_data // 图表加载完毕后执行的回调函数
+        }
+    },
+    title: {
+        text: 'GBM模型：标的资产到期日价格直方分布图'
+    },
+    xAxis: [{
+        title: { text: '数据点' }
+        }, {
+        title: { text: '价格' },
+        opposite: true
+    }],
+    yAxis: [{
+        title: { text: '价格' }
+        }, {
+        title: { text: '分布数量' },
+        opposite: true
+    }],
+    series: [{
+        name: '直方图',
+        type: 'histogram',
+        xAxis: 1,
+        yAxis: 1,
+        baseSeries: 's1',
+        zIndex: -1
+        }, {
+        name: '数据点',
+        type: 'scatter',
+        data: [1,2,3],
+        id: 's1',
+        marker: {
+            radius: 0.8
+        }}
+    ],
+    credits:{enabled:false}
+    });
+})
 
-            var initial_value = $('#initial_value').val();
-            var volatility = $('#volatility').val();
-            var frequency = $('#frequency').val();
-            var csr = $('#csr').val();
-            var paths = $('#paths').val();
+// post表单，从API获取gbm模拟data
+function api_get_gbm_data() {
+    var pricing_date_y = $('#pricing_date_y').val();
+    var pricing_date_m = $('#pricing_date_m').val();
+    var pricing_date_d = $('#pricing_date_d').val();
 
-            var currency = $('#currency').val();
+    var final_date_y = $('#final_date_y').val();
+    var final_date_m = $('#final_date_m').val();
+    var final_date_d = $('#final_date_d').val();
 
-           $.ajax({
-                type: 'POST',
-                data: {
-                    pricing_date_y: pricing_date_y,
-                    pricing_date_m: pricing_date_m,
-                    pricing_date_d: pricing_date_d,
-                    final_date_y: final_date_y,
-                    final_date_m: final_date_m,
-                    final_date_d: final_date_d,
-                    initial_value: initial_value,
-                    volatility: volatility,
-                    frequency: frequency,
-                    csr: csr,
-                    paths: paths,
-                    currency: currency,
-                    "gi":math.random(),},
-                url: '/options/gbm/',
-                dataType: 'json',
-                {#async:false,#}
-                success: function (){
+    var initial_value = $('#initial_value').val();
+    var volatility = $('#volatility').val();
+    var frequency = $('#frequency').val();
+    var csr = $('#csr').val();
+    var paths = $('#paths').val();
 
-                },
-                error: function () {
-                    alert('输入参数错误');
-                }
-            });
+    var currency = $('#currency').val();
 
-            return false;
-        });
+    $.ajax({
+        type : 'post',
+        url: '/options/gbm_json/',
+        data: {
+            pricing_date_y: pricing_date_y,
+            pricing_date_m: pricing_date_m,
+            pricing_date_d: pricing_date_d,
+            final_date_y: final_date_y,
+            final_date_m: final_date_m,
+            final_date_d: final_date_d,
+            initial_value: initial_value,
+            volatility: volatility,
+            frequency: frequency,
+            csr: csr,
+            paths: paths,
+            currency: currency,
+        },
+        dataType : 'json',
+        success: function(ret) {
+             chart1.series[1].setData(ret.data);
+            // console.log(chart.series[1].data)
+        },
+        cache: false
+    });
+}
 
-var data = {{ data }}
-Highcharts.chart('container', {
-	title: {
-		text: 'GBM模型：标的资产到期日价格直方分布图'
+</script>
+
+{#   ***********************  图二 : 获取一条随机路径  ******************************   #}
+<br>
+<button onclick="api_get_gbm_data_path();" style="background-color: #67b168">&nbsp;随机获取一条路径&nbsp;</button>
+<div id="container_2" style="width: 800px; height: 400px;"></div>
+
+<script type="text/javascript">
+// 从API获取gbm模拟的一条路径
+function api_get_gbm_data_path() {
+    $.ajax({
+        url: '/options/gbm_json_path_data/',
+        dataType : 'json',
+        success: function(ret) {
+            console.log(ret.path_list)
+            chart2.series[0].setData(ret.path_list)
+            chart2.xAxis[0].update({categories: ret.time_list})
+
+        },
+        cache: false
+    });
+}
+
+
+var chart2= Highcharts.chart('container_2', {
+	chart2: {
+		type: 'spline',
+        events: {
+            load: api_get_gbm_data_path // 图表加载完毕后执行的回调函数
+        },
 	},
-	xAxis: [{
-		title: { text: '数据点' }
-	}, {
-		title: { text: '价格' },
-		opposite: true
-	}],
-	yAxis: [{
-		title: { text: '价格' }
-	}, {
-		title: { text: '分布数量' },
-		opposite: true
-	}],
-	series: [{
-		name: '直方分布图',
-		type: 'histogram',
-		xAxis: 1,
-		yAxis: 1,
-		baseSeries: 's1',
-		zIndex: -1
-	}, {
-		name: '数据点',
-		type: 'scatter',
-		data: data,
-		id: 's1',
-		marker: {
-			radius: 0.8
+	title: {
+		text: '获取一条随机路径'
+	},
+	xAxis: {
+		categories: []
+	},
+	yAxis: {
+		title: {
+			text: '价格'
+		},
+	},
+	tooltip: {
+		crosshairs: true,
+		shared: true
+	},
+	plotOptions: {
+		spline: {
+			marker: {
+				radius: 4,
+				lineColor: '#666666',
+				lineWidth: 1
+			}
 		}
-	}]
+	},
+	series: [{
+		name: '标的资产价格',
+		marker: {
+			symbol: 'circle'
+		},
+		data: []
+	}, ],
+    credits:{enabled:false},
 });
 
 </script>
 
-
-
-
-
+{#    ************************  图三： 欧式期权的价格模拟 *****************************************#}
 {% endblock base %}

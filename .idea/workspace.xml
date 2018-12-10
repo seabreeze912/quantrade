@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7cb17bea-aec2-4954-b0b8-1d01e3e5b346" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app3/constant_short_rate.py" beforeDir="false" afterPath="$PROJECT_DIR$/app3/constant_short_rate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app3/dx.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app3/dx_frame.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app3/geometric_brownian_motion.py" beforeDir="false" afterPath="$PROJECT_DIR$/app3/geometric_brownian_motion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app3/jump_diffusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/app3/jump_diffusion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app3/sqare_root_diffusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/app3/sqare_root_diffusion.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app3/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app3/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app3/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app3/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gbm_test_01.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/app1/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/app1/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/app3/gbm.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/app3/gbm.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,20 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/quantrade/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app3/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="639">
+              <caret line="85" column="27" selection-start-line="85" selection-start-column="18" selection-end-line="85" selection-end-column="27" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -51,40 +35,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app3/urls.py">
+      <file leaf-file-name="gbm.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/app3/gbm.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="252">
+              <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
               <folding>
-                <element signature="e#643#684#0" expanded="true" />
+                <element signature="e#2406#2439#0#HTML" expanded="true" />
+                <element signature="e#4882#4915#0#HTML" expanded="true" />
+                <element signature="e#5038#5074#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app1/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="40" />
-              <folding>
-                <element signature="e#643#684#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="apps.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app3/apps.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/quantrade/__init__.py">
+      <file leaf-file-name="geometric_brownian_motion.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app3/geometric_brownian_motion.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="18">
-              <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
+              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="simulation_class.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app3/simulation_class.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1350">
+              <caret line="76" column="51" selection-start-line="76" selection-start-column="36" selection-end-line="76" selection-end-column="51" />
+              <folding>
+                <element signature="e#48#67#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,6 +80,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>console</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -107,7 +93,6 @@
       <list>
         <option value="$PROJECT_DIR$/quantrade/__init__.py" />
         <option value="$PROJECT_DIR$/app1/urls.py" />
-        <option value="$PROJECT_DIR$/templates/app1/home.html" />
         <option value="$PROJECT_DIR$/app1/views.py" />
         <option value="$PROJECT_DIR$/app2/urls.py" />
         <option value="$PROJECT_DIR$/app2/views.py" />
@@ -119,13 +104,15 @@
         <option value="$USER_HOME$/Desktop/jshare.com.cn/直方图.html" />
         <option value="$PROJECT_DIR$/templates/app1/strategy03.html" />
         <option value="$PROJECT_DIR$/app3/constant_short_rate.py" />
-        <option value="$PROJECT_DIR$/templates/app3/gbm.html" />
-        <option value="$PROJECT_DIR$/app3/views.py" />
         <option value="$PROJECT_DIR$/app3/geometric_brownian_motion.py" />
         <option value="$PROJECT_DIR$/app3/jump_diffusion.py" />
         <option value="$PROJECT_DIR$/app3/sqare_root_diffusion.py" />
         <option value="$PROJECT_DIR$/quantrade/settings.py" />
+        <option value="$PROJECT_DIR$/templates/app3/gbm1.html" />
+        <option value="$PROJECT_DIR$/templates/app1/home.html" />
         <option value="$PROJECT_DIR$/app3/urls.py" />
+        <option value="$PROJECT_DIR$/app3/views.py" />
+        <option value="$PROJECT_DIR$/templates/app3/gbm.html" />
       </list>
     </option>
   </component>
@@ -138,7 +125,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="1273" />
     <option name="width" value="1294" />
     <option name="height" value="1407" />
@@ -210,8 +197,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\django_test\quantrade\quantrade\app3" />
       <recent name="E:\django_test\quantrade\quantrade\templates\app3" />
+      <recent name="E:\django_test\quantrade\quantrade\app3" />
       <recent name="E:\django_test\quantrade\app1" />
     </key>
   </component>
@@ -294,6 +281,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1273" y="0" width="1294" height="1407" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -301,8 +289,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.329653" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.329653" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32886437" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25364667" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32886437" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2617504" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -315,7 +303,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329653" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,26 +313,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app1/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="28" column="4" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="62" />
-          <folding>
-            <element signature="e#643#684#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app3/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="30" lean-forward="true" selection-start-column="30" selection-end-column="30" />
-          <folding>
-            <element signature="e#643#684#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app1/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1818">
@@ -430,13 +398,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/app1/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/app1/base.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -463,37 +424,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/app3/gbm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app3/admin.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app3/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app3/dx.py" />
-    <entry file="file://$PROJECT_DIR$/app3/constant_short_rate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app3/geometric_brownian_motion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app3/get_year_deltas.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app3/jump_diffusion.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -509,19 +443,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app3/models.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app3/simulation_class.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#48#67#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app3/sn_random_numbers.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app3/sqare_root_diffusion.py">
@@ -550,16 +471,6 @@
     <entry file="file://$PROJECT_DIR$/app1/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app1/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="789">
-          <caret line="108" selection-start-line="108" selection-end-line="108" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app1/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -577,17 +488,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quantrade/settings.py">
+    <entry file="file://$PROJECT_DIR$/app1/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app3/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="549">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -604,12 +508,89 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/quantrade/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/app3/gbm11.html" />
+    <entry file="file://$PROJECT_DIR$/templates/app3/gbm_test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-837">
+          <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app3/simulation_class.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="76" column="51" selection-start-line="76" selection-start-column="36" selection-end-line="76" selection-end-column="51" />
+          <folding>
+            <element signature="e#48#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/app1/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app3/admin.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app3/constant_short_rate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app3/sn_random_numbers.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app3/get_year_deltas.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app3/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="504">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="e#643#684#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app3/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="639">
+          <caret line="85" column="27" selection-start-line="85" selection-start-column="18" selection-end-line="85" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app3/geometric_brownian_motion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/app3/gbm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+          <folding>
+            <element signature="e#2406#2439#0#HTML" expanded="true" />
+            <element signature="e#4882#4915#0#HTML" expanded="true" />
+            <element signature="e#5038#5074#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
