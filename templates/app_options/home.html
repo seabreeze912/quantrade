@@ -1,0 +1,9 @@
+{% extends 'app_options/index.html' %}
+{% load static from staticfiles %}
+
+{% block linkscript %}
+
+    <!-- this page specific styles -->
+    <link rel="stylesheet" href="{% static 'app_options/css/compiled/index.css' %}" type="text/css" media="screen" />
+
+{% endblock linkscript %}

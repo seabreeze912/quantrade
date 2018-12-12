@@ -1,0 +1,113 @@
+{% extends 'app_options/index.html' %}
+{% load static from staticfiles %}
+
+{% block linkscript %}
+
+<!-- 样式css -->
+<link rel="stylesheet" href="{% static 'app_options/css/compiled/ui-elements.css' %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static 'app_options/css/compiled/elements.css' %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static 'app_options/css/compiled/form-wizard.css' %}" type="text/css" media="screen" />
+
+<!-- hcharts -->
+<link rel="icon" href="https://static.jianshukeji.com/highcharts/images/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+<script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+<script src="https://img.hcharts.cn/highcharts/modules/histogram-bellcurve.js"></script>
+<script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+
+<!-- 本页专用 options_chart.css -->
+<link rel="stylesheet" href="{% static 'app_options/css/compiled/options_chart.css' %}" type="text/css" media="screen" />
+
+{% endblock linkscript %}
+
+
+{% block base %}
+
+<div class="content">
+	<div class="container-fluid">
+		<div id="pad-wrapper">
+			<h1  class="title"> 几何布朗运动模拟 </h1>
+			<p>
+				几何布朗运动(Geometric Brownian Motion，GBM),也叫做指数布朗运动,是连续时间情况下的随机过程，其中随机变量的对数遵循布朗运动。<br />
+				几何布朗运动在金融数学中有所应用，用来在布莱克-舒尔斯定价模型中模仿股票价格。
+			</p>
+			<hr />
+
+			<h2  class="sub_title"> 设置参数，开始模拟GBM</h2>
+			<div class="row-fluid section btns">
+				<a class="btn-flat default" onclick="api_get_gbm_data();" >Start</a>
+			</div>
+
+			<form id="gbm_params" method="post">
+				{% csrf_token %}
+				<div class="row-fluid form-wrapper">
+					<div class="field-box">
+						<label>定价日期：</label>
+						<input class="span8" type="text" value=2017 id="pricing_date_y" name="pricing_date_y" />年
+						<input class="span8" type="text" value=1 id="pricing_date_m" name="pricing_date_m" />月
+						<input class="span8" type="text" value=1 id="pricing_date_d" name="pricing_date_d" value=1/>日
+					</div>
+
+					<div class="field-box">
+						<label>到期日期：</label>
+						<input class="span8" type="text" value=2018 id="final_date_y" name="final_date_y" />年
+						<input class="span8" type="text" value=1 id="final_date_m" name="final_date_m" />月
+						<input class="span8" type="text" value=1 id="final_date_d" name="final_date_d" />日
+					</div>
+
+					<div class="field-box">
+						<label>标的现价：</label>
+						<input class="span8" type="text" value=100 id="initial_value" name="initial_value"/>
+					</div>
+
+					<div class="field-box">
+						<label>年波动率：</label>
+						<input class="span8" type="text" value=0.1 id="volatility" name="volatility" />
+					</div>
+
+					<div class="field-box">
+						<label>时间频率：</label>
+						<input class="span8" type="text" value='M' id="frequency" name="frequency" />
+					</div>
+
+					<div class="field-box">
+						<label>短期利率：</label>
+						<input class="span8" value=0.05 type="text" id="csr" name="csr" />
+					</div>
+
+					<div class="field-box">
+						<label>路径数量：</label>
+						<input class="span8" type="text" value=1000 id="paths" name="paths" />
+					</div>
+
+					<div class="field-box">
+						<label>货币种类：</label>
+						<input class="span8" type="text" value='EUR' id="currency" name="currency" />
+					</div>
+				</div>
+			</form>
+
+			<!-- GBM直方图 -->
+			<div id="container_1" style="width: 800px; height: 400px;"></div>
+			<hr>
+			<!-- GBM直方图 -->
+
+			<h2  class="sub_title"> 随机获取一条模拟路径</h2>
+			<div class="row-fluid section btns">
+				<a class="btn-flat default" onclick="api_get_gbm_data_path();"  >Start</a>
+			</div>
+
+			<!-- 随机路径折线图 -->
+			<div id="container_2" style="width: 800px; height: 400px;"></div>
+			<!-- 随机路径折线图 -->
+
+        </div>
+    </div>
+</div>
+
+<!-- 本页专用 -->
+<script type="text/javascript" charset="utf-8" src="{% static 'app_options/js/options_gbm.js' %}" ></script>
+
+{% endblock base %}

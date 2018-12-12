@@ -1,0 +1,131 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<title>Home</title>
+    
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- bootstrap -->
+    <link href="{% static 'app_options/css/bootstrap/bootstrap.css' %}" rel="stylesheet" />
+
+    <!-- libraries -->
+    <link href="{% static 'app_options/css/lib/font-awesome.css' %}" type="text/css" rel="stylesheet" />
+
+    <!-- global styles -->
+    <link rel="stylesheet" type="text/css" href="{% static 'app_options/css/layout.css' %}" />
+
+	<!-- scripts -->
+    <script type="text/javascript" charset="utf-8" src="{% static 'app_options/js/jquery-3.3.1.min.js' %}" ></script>
+    <script type="text/javascript" charset="utf-8" src="{% static 'app_options/js/bootstrap.min.js' %}" ></script>
+    <script type="text/javascript" charset="utf-8" src="{% static 'app_options/js/theme.js' %}" ></script>
+
+	<!-- 网页专用css.js -->
+    {% block linkscript %}
+    {% endblock linkscript %}
+
+</head>
+
+<body>
+	
+	<!-- navbar -->
+    <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+            <button type="button" class="btn btn-navbar visible-phone" id="menu-toggler">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+            <!-- <a class="brand" href="index.html"><img src="img/logo.png" height="35" width="35"/></a> -->
+
+            <ul class="nav pull-right">                
+                <li class="hidden-phone">
+                    <input class="search" type="text" />
+                </li>
+            </ul>            
+        </div>
+    </div>
+    <!-- end navbar -->
+	
+	
+	<!-- sidebar -->
+	<div id="sidebar-nav">
+			<ul id="dashboard-menu">
+					<li>
+							<a href="/home/">
+									<i class="icon-home"></i>
+									<span>Home</span>
+							</a>
+					</li>   
+							 
+					<li>
+							<a class="dropdown-toggle" href="#">
+							<!-- <a href="chart-showcase.html"> -->
+									<i class="icon-signal"></i>
+									<span>Charts</span>
+									<i class="icon-chevron-down"></i>
+							</a>
+							
+							<ul class="submenu">
+									<li><a href="/options_gbm/">几何布朗运动模拟</a></li>
+									<li><a href="new-user.html">--</a></li>
+									<li><a href="user-profile.html">--</a></li>
+							</ul>
+					</li>
+					
+					<li>
+							<a href="gallery.html">
+									<i class="icon-picture"></i>
+									<span>Gallery</span>
+							</a>
+					</li>
+				
+			</ul>
+	</div>
+	<!-- end sidebar -->
+
+
+	<!-- main container -->
+
+
+    {% block base %}
+
+    {% endblock base %}
+      
+
+
+    <script type="text/javascript">
+        $(function () {
+
+            // jQuery Knobs
+            $(".knob").knob();
+
+            // jQuery UI Sliders
+            $(".slider-sample1").slider({
+                value: 100,
+                min: 1,
+                max: 500
+            });
+            $(".slider-sample2").slider({
+                range: "min",
+                value: 130,
+                min: 1,
+                max: 500
+            });
+            $(".slider-sample3").slider({
+                range: true,
+                min: 0,
+                max: 500,
+                values: [ 40, 170 ],
+            });
+
+           
+    </script>
+    <!-- end main container -->
+
+
+</body>
+</html>

@@ -15,9 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from . import views
+
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include('app_index.urls', namespace='app_index')),
-    url(r'^', include('app_options.urls', namespace='app_options')),
+
+    url(r'^options/gbm/$', views.gbm),
+    url(r'^options/gbm_json/$', views.gbm_json),
+    url(r'^options/gbm_json_path_data/$', views.gbm_json_path_data),
+
+    url(r'^home/$', views.test01),
+    url(r'^options_gbm/$', views.test02),
+
+
+
 ]
