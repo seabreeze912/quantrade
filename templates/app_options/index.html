@@ -3,8 +3,6 @@
 <html>
 	
 <head>
-	<title>Home</title>
-    
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -70,7 +68,7 @@
 							</a>
 							
 							<ul class="submenu">
-									<li><a href="/options_gbm/">几何布朗运动模拟</a></li>
+									<li><a href="/options_gbm/">期权估值</a></li>
 									<li><a href="new-user.html">--</a></li>
 									<li><a href="user-profile.html">--</a></li>
 							</ul>
@@ -90,12 +88,18 @@
 
 	<!-- main container -->
 
+<div class="content">
+	<div class="container-fluid">
+        <div id="pad-wrapper">
 
     {% block base %}
 
+
     {% endblock base %}
       
-
+        </div>
+    </div>
+</div>
 
     <script type="text/javascript">
         $(function () {

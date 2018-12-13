@@ -26,13 +26,13 @@ class simulation_class(object):
             try:
                 self.time_grid = mar_env.get_list('time_grid')    
             except:
-                print(name + ' time_grid 为空')
+                # print(name + ' time_grid 为空')
                 self.time_grid = None
                 
             try:
                 self.special_dates = mar_env.get_list('special_dates')   
             except:
-                print(name + ' special_dates 为空')
+                # print(name + ' special_dates 为空')
                 self.special_dates = []
                 
             self.instrument_values=None
@@ -43,7 +43,7 @@ class simulation_class(object):
                 self.rn_set = mar_env.get_list('rn_set')[self.name]
                 self.random_numbers = mar_env.get_list('random_numbers')
                 # print(self.random_numbers)
-            print(name + ' simulation_class环境参数获取完成')
+            # print(name + ' simulation_class环境参数获取完成')
 
         except:
             print(name + ' simulation_class环境参数获取错误！')
@@ -72,6 +72,8 @@ class simulation_class(object):
             time_grid.sort()
         
         self.time_grid = np.array(time_grid)
+        # print('special_dates', self.special_dates)
+        # print('time_grid', self.time_grid)
     
     
     def get_instrument_values(self, fixed_seed=True):

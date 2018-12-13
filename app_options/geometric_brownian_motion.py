@@ -27,8 +27,7 @@ class geometric_brownian_motion(simulation_class):
             self.final_date = final_date
             
         self.instrument_values = None
-        
-    
+
     def generate_paths(self, fixed_seed=False, day_count=365.):
         if self.time_grid is None:
             self.generate_time_grid()

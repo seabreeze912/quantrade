@@ -20,13 +20,6 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
-    url(r'^strategy01/$', views.strategy01, name='strategy01'),
-
-    url(r'^strategy02/$', views.strategy02, name='strategy02'),
-    url(r'^data_fresh/$', views.data_fresh, name='data_fresh'),
-
-    url(r'^strategy03/$', views.strategy03, name='strategy02'),
-    url(r'^strategy03_ajax_post_01/$', views.comments_upload),
 
 
 ]
