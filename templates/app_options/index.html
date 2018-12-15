@@ -8,17 +8,27 @@
 
     <!-- bootstrap -->
     <link href="{% static 'app_options/css/bootstrap/bootstrap.css' %}" rel="stylesheet" />
+    <link href="{% static 'app_options/css/bootstrap/bootstrap-responsive.css' %}" rel="stylesheet" />
+    <link href="{% static 'app_options/css/bootstrap/bootstrap-overrides.css' %}" type="text/css" rel="stylesheet" />
 
     <!-- libraries -->
     <link href="{% static 'app_options/css/lib/font-awesome.css' %}" type="text/css" rel="stylesheet" />
+    <link href="{% static 'app_options/css/lib/jquery-ui-1.10.2.custom.css' %}" rel="stylesheet" type="text/css" />
 
     <!-- global styles -->
     <link rel="stylesheet" type="text/css" href="{% static 'app_options/css/layout.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app_options/css/elements.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app_options/css/icons.css' %}" />
 
 	<!-- scripts -->
     <script type="text/javascript" charset="utf-8" src="{% static 'app_options/js/jquery-3.3.1.min.js' %}" ></script>
     <script type="text/javascript" charset="utf-8" src="{% static 'app_options/js/bootstrap.min.js' %}" ></script>
     <script type="text/javascript" charset="utf-8" src="{% static 'app_options/js/theme.js' %}" ></script>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 
 	<!-- 网页专用css.js -->
     {% block linkscript %}

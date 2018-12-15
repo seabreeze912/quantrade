@@ -148,7 +148,7 @@ function get_gbm_data_path() {
     var num = 10;
     while(out.length < num){
         var temp = (Math.random()*arr.length) >> 0;
-        out.push(arr.splice(temp,1));
+        out.push(arr.splice(temp,1))
     }
     // alert(out);
 
@@ -300,7 +300,7 @@ function set_call_values() {
     chart3.series[1].setData(call_all_options_values);
     chart3.xAxis[1].update({plotLines: [{
                                 color: '#FF0000',
-                                width: 5,
+                                width: 3,
                                 value: call_options_value,
                                 zIndex:99,
                                 label: {
@@ -319,152 +319,6 @@ function set_call_values() {
                             },)
 }
 
-
-// ******************************************************************************************************
-// 绘制看涨期权价格S与K
-
-function call_S_K() {
-    chart3_1.series[0].setData(call_p_list);
-    chart3_1.xAxis[0].update({categories: s_list})
-}
-
-var chart3_1= Highcharts.chart('container_3_1', {
-	chart3_1: {
-		type: 'spline',
-	},
-	title: {
-		text: ''
-	},
-    legend: {
-			enabled: false
-    },
-	xAxis: {
-		categories: [1,2,3,],
-        title: {text:'标的资产现价'}
-	},
-	yAxis: {
-		title: {
-			text: '期权价格'
-		},
-	},
-	tooltip: {
-		crosshairs: true,
-		shared: true
-	},
-	plotOptions: {
-		series: {
-			lineWidth: 1,
-            marker: {
-			    symbol: 'circle',
-                radius: 1,
-                enabled: false
-		    },
-		},
-	},
-    series: [{
-		name: '欧式看涨期权',
-		data: [4,5,6,9]
-    }],
-    credits:{enabled:false},
-});
-
-
-// ******************************************************************************************************
-// 绘制看涨期权价格S与德尔塔
-
-function call_S_D() {
-    chart3_2.series[0].setData(call_d_list);
-    chart3_2.xAxis[0].update({categories: s_list})
-}
-
-var chart3_2= Highcharts.chart('container_3_2', {
-	chart3_2: {
-		type: 'spline',
-	},
-	title: {
-		text: ''
-	},
-    legend: {
-			enabled: false
-    },
-	xAxis: {
-		categories: [1,2,3,],
-        title: {text:'标的资产现价'}
-	},
-	yAxis: {
-		title: {
-			text: '期权Delta'
-		},
-	},
-	tooltip: {
-		crosshairs: true,
-		shared: true
-	},
-	plotOptions: {
-		series: {
-			lineWidth: 1,
-            marker: {
-			    symbol: 'circle',
-                radius: 1,
-                enabled: false
-		    },
-		},
-	},
-    series: [{
-		name: '欧式看涨期权Delta',
-		data: [4,5,6,9]
-    }],
-    credits:{enabled:false},
-});
-
-
-// ******************************************************************************************************
-// 绘制看涨期权价格S与微咖
-
-function call_S_V() {
-    chart3_3.series[0].setData(call_v_list);
-    chart3_3.xAxis[0].update({categories: s_list})
-}
-
-var chart3_3= Highcharts.chart('container_3_3', {
-	chart3_3: {
-		type: 'spline',
-	},
-	title: {
-		text: ''
-	},
-    legend: {
-			enabled: false
-    },
-	xAxis: {
-		categories: [1,2,3,],
-        title: {text:'标的资产现价'}
-	},
-	yAxis: {
-		title: {
-			text: '期权Vega'
-		},
-	},
-	tooltip: {
-		crosshairs: true,
-		shared: true
-	},
-	plotOptions: {
-		series: {
-			lineWidth: 1,
-            marker: {
-			    symbol: 'circle',
-                radius: 1,
-                enabled: false
-		    },
-		},
-	},
-    series: [{
-		name: '欧式看涨期权Vega',
-		data: [4,5,6,9]
-    }],
-    credits:{enabled:false},
-});
 
 // ******************************************************************************************************
 // 绘制看跌期权价格情况
@@ -533,7 +387,7 @@ function set_put_values() {
     chart4.series[1].setData(put_all_options_values);
     chart4.xAxis[1].update({plotLines: [{
                                 color: '#FF0000',
-                                width: 5,
+                                width: 3,
                                 value: put_options_value,
                                 zIndex:99,
                                 label: {
@@ -544,7 +398,7 @@ function set_put_values() {
                                         verticalAlign: 'middle',
                                         style: {
                                             fontWeight: 'bold',
-                                            fontSize: '15',
+                                            fontSize: '15'
                                         }
                                     }
 		                        }],
@@ -554,15 +408,17 @@ function set_put_values() {
 
 
 // ******************************************************************************************************
-// 绘制看跌期权价格S与K
+// 绘制期权价格S与K
 
-function put_S_K() {
-    chart4_1.series[0].setData(put_p_list);
-    chart4_1.xAxis[0].update({categories: s_list})
+function call_S_K() {
+    chart3_1.series[0].setData(call_p_list);
+    chart3_1.series[1].setData(put_p_list);
+    chart3_1.xAxis[0].update({categories: s_list})
+
 }
 
-var chart4_1= Highcharts.chart('container_4_1', {
-	chart4_1: {
+var chart3_1= Highcharts.chart('container_3_1', {
+	chart3_1: {
 		type: 'spline',
 	},
 	title: {
@@ -595,23 +451,27 @@ var chart4_1= Highcharts.chart('container_4_1', {
 		},
 	},
     series: [{
-		name: '欧式看跌期权',
+		name: '欧式看涨期权',
 		data: [4,5,6,9]
+    },{
+		name: '欧式看跌期权',
+		data: [9,6,5,4]
     }],
     credits:{enabled:false},
 });
 
 
 // ******************************************************************************************************
-// 绘制看跌期权价格S与德尔塔
+// 绘制期权价格S与德尔塔
 
-function put_S_D() {
-    chart4_2.series[0].setData(put_d_list);
-    chart4_2.xAxis[0].update({categories: s_list})
+function call_S_D() {
+    chart3_2.series[0].setData(call_d_list);
+    chart3_2.series[1].setData(put_d_list);
+    chart3_2.xAxis[0].update({categories: s_list})
 }
 
-var chart4_2= Highcharts.chart('container_4_2', {
-	chart4_2: {
+var chart3_2= Highcharts.chart('container_3_2', {
+	chart3_2: {
 		type: 'spline',
 	},
 	title: {
@@ -644,22 +504,27 @@ var chart4_2= Highcharts.chart('container_4_2', {
 		},
 	},
     series: [{
+		name: '欧式看涨期权Delta',
+		data: [4,5,6,9]
+    },{
 		name: '欧式看跌期权Delta',
 		data: [4,5,6,9]
     }],
     credits:{enabled:false},
 });
 
-// ******************************************************************************************************
-// 绘制看跌期权价格S与微咖
 
-function put_S_V() {
-    chart4_3.series[0].setData(put_v_list);
-    chart4_3.xAxis[0].update({categories: s_list})
+// ******************************************************************************************************
+// 绘制期权价格S与Vega
+
+function call_S_V() {
+    chart3_3.series[0].setData(call_v_list);
+    chart3_3.series[1].setData(put_v_list);
+    chart3_3.xAxis[0].update({categories: s_list})
 }
 
-var chart4_3= Highcharts.chart('container_4_3', {
-	chart4_3: {
+var chart3_3= Highcharts.chart('container_3_3', {
+	chart3_3: {
 		type: 'spline',
 	},
 	title: {
@@ -692,8 +557,14 @@ var chart4_3= Highcharts.chart('container_4_3', {
 		},
 	},
     series: [{
+		name: '欧式看涨期权Vega',
+		data: [4,5,6,9]
+    },{
 		name: '欧式看跌期权Vega',
 		data: [4,5,6,9]
     }],
     credits:{enabled:false},
 });
+
+
+
