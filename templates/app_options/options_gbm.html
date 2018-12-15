@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="{% static 'app_options/css/compiled/elements.css' %}" type="text/css" media="screen" />
 <link rel="stylesheet" href="{% static 'app_options/css/compiled/form-wizard.css' %}" type="text/css" media="screen" />
 
+<!-- 本页专用 options_chart.css -->
+<link rel="stylesheet" href="{% static 'app_options/css/compiled/options_chart.css' %}" type="text/css" media="screen" />
+
 <!-- hcharts -->
 
 <script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
@@ -16,209 +19,355 @@
 <script src="https://img.hcharts.cn/highcharts/modules/histogram-bellcurve.js"></script>
 <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
 
-<!-- 本页专用 options_chart.css -->
-<link rel="stylesheet" href="{% static 'app_options/css/compiled/options_chart.css' %}" type="text/css" media="screen" />
-
 
 {% endblock linkscript %}
 
 
 {% block base %}
+<h1  class="title"> 基于几何布朗运动对期权进行估值 </h1>
+<p>
+    几何布朗运动(Geometric Brownian Motion，GBM),也叫做指数布朗运动,是连续时间情况下的随机过程，其中随机变量的对数遵循布朗运动。<br />
+    几何布朗运动在金融数学中有所应用，用来在布莱克-舒尔斯定价模型中模仿股票价格。
+</p>
+<hr />
+
+<!-- **************************************GBM模拟底层资产************************************** -->
+<h2  class="sub_title"> 期权类型</h2>
+<div class="ui-select">
+    <select  id="option_gbm_option_model">
+        <option>European</option>
+        <option>American</option>
+    </select>
+</div>
+<br /><br />
+
+<h2  class="sub_title"> 设置参数</h2>
+<div class="row-fluid section btns">
+    <a class="btn-flat default" onclick="api_gbm_data();" >Start</a>
+</div>
+
+<form id="gbm_params" method="post">
+    {% csrf_token %}
+    <div class="row-fluid form-wrapper">
+        <div class="field-box">
+            <label>定价日期：</label>
+            <input class="span8" type="text" value=2017 id="pricing_date_y" name="pricing_date_y" />年
+            <input class="span8" type="text" value=1 id="pricing_date_m" name="pricing_date_m" />月
+            <input class="span8" type="text" value=1 id="pricing_date_d" name="pricing_date_d" value=1/>日
+        </div>
+
+        <div class="field-box">
+            <label>行权日期：</label>
+            <input class="span8" type="text" value=2017 id="maturity_date_y" name="maturity_date_y" />年
+            <input class="span8" type="text" value=6 id="maturity_date_m" name="maturity_date_m" />月
+            <input class="span8" type="text" value=1 id="maturity_date_d" name="maturity_date_d" value=1/>日
+        </div>
+
+        <div class="field-box">
+            <label>最后日期：</label>
+            <input class="span8" type="text" value=2018 id="final_date_y" name="final_date_y" />年
+            <input class="span8" type="text" value=1 id="final_date_m" name="final_date_m" />月
+            <input class="span8" type="text" value=1 id="final_date_d" name="final_date_d" />日
+        </div>
+
+        <div class="field-box">
+            <label>标的现价：</label>
+            <input class="span8" type="text" value=100 id="initial_value" name="initial_value"/>
+        </div>
+
+        <div class="field-box">
+            <label>行权价格：</label>
+            <input class="span8" type="text" value=110 id="strike" name="strike"/>
+        </div>
+
+        <div class="field-box">
+            <label>年波动率：</label>
+            <input class="span8" type="text" value=0.3 id="volatility" name="volatility" />
+        </div>
+
+        <div class="field-box">
+            <label>时间频率：</label>
+            <input class="span8" type="text" value='M' id="frequency" name="frequency" />
+        </div>
+
+        <div class="field-box">
+            <label>短期利率：</label>
+            <input class="span8" value=0.05 type="text" id="csr" name="csr" />
+        </div>
+
+        <div class="field-box">
+            <label>路径数量：</label>
+            <input class="span8" type="text" value=1000 id="paths" name="paths" />
+        </div>
+
+        <div class="field-box">
+            <label>标的币种：</label>
+            <input class="span8" type="text" value='EUR' id="currency" name="currency" />
+        </div>
+
+        <div class="field-box">
+            <label>交割币种：</label>
+            <input class="span8" type="text" value='EUR' id="option_currency" name="option_currency" />
+        </div>
+    </div>
+</form>
 
 
-			<h1  class="title"> 基于几何布朗运动对欧式期权进行估值 </h1>
-			<p>
-				几何布朗运动(Geometric Brownian Motion，GBM),也叫做指数布朗运动,是连续时间情况下的随机过程，其中随机变量的对数遵循布朗运动。<br />
-				几何布朗运动在金融数学中有所应用，用来在布莱克-舒尔斯定价模型中模仿股票价格。
-			</p>
-			<hr />
+<!-- GBM直方图 -->
+<div class="row-fluid chart">
+    <div class="span12">
+        <div id="container_1" style="height: 400px; max-width: 800px;"></div>
+    </div>
+</div>
+<hr>
+<!-- GBM直方图 -->
 
-            <!-- **************************************GBM模拟底层资产************************************** -->
-			<h2  class="sub_title"> 设置参数</h2>
-			<div class="row-fluid section btns">
-				<a class="btn-flat default" onclick="api_gbm_data();" >Start</a>
-			</div>
-
-			<form id="gbm_params" method="post">
-				{% csrf_token %}
-				<div class="row-fluid form-wrapper">
-					<div class="field-box">
-						<label>定价日期：</label>
-						<input class="span8" type="text" value=2017 id="pricing_date_y" name="pricing_date_y" />年
-						<input class="span8" type="text" value=1 id="pricing_date_m" name="pricing_date_m" />月
-						<input class="span8" type="text" value=1 id="pricing_date_d" name="pricing_date_d" value=1/>日
-					</div>
-
-                    <div class="field-box">
-						<label>行权日期：</label>
-						<input class="span8" type="text" value=2017 id="maturity_date_y" name="maturity_date_y" />年
-						<input class="span8" type="text" value=6 id="maturity_date_m" name="maturity_date_m" />月
-						<input class="span8" type="text" value=1 id="maturity_date_d" name="maturity_date_d" value=1/>日
-					</div>
-
-					<div class="field-box">
-						<label>最后日期：</label>
-						<input class="span8" type="text" value=2018 id="final_date_y" name="final_date_y" />年
-						<input class="span8" type="text" value=1 id="final_date_m" name="final_date_m" />月
-						<input class="span8" type="text" value=1 id="final_date_d" name="final_date_d" />日
-					</div>
-
-					<div class="field-box">
-						<label>标的现价：</label>
-						<input class="span8" type="text" value=100 id="initial_value" name="initial_value"/>
-					</div>
-
-                    <div class="field-box">
-						<label>行权价格：</label>
-						<input class="span8" type="text" value=110 id="strike" name="strike"/>
-					</div>
-
-					<div class="field-box">
-						<label>年波动率：</label>
-						<input class="span8" type="text" value=0.3 id="volatility" name="volatility" />
-					</div>
-
-					<div class="field-box">
-						<label>时间频率：</label>
-						<input class="span8" type="text" value='M' id="frequency" name="frequency" />
-					</div>
-
-					<div class="field-box">
-						<label>短期利率：</label>
-						<input class="span8" value=0.05 type="text" id="csr" name="csr" />
-					</div>
-
-					<div class="field-box">
-						<label>路径数量：</label>
-						<input class="span8" type="text" value=1000 id="paths" name="paths" />
-					</div>
-
-					<div class="field-box">
-						<label>标的币种：</label>
-						<input class="span8" type="text" value='EUR' id="currency" name="currency" />
-					</div>
-
-					<div class="field-box">
-						<label>交割币种：</label>
-						<input class="span8" type="text" value='EUR' id="option_currency" name="option_currency" />
-					</div>
-				</div>
-			</form>
-
-			<!-- GBM直方图 -->
-            <div class="row-fluid chart">
-                <div class="span12">
-			        <div id="container_1" style="height: 400px; max-width: 800px;"></div>
-                </div>
-            </div>
-			<hr>
-			<!-- GBM直方图 -->
-
-            <!-- **************************************模拟路径**************************************** -->
-			<h2  class="sub_title"> 随机获取10条模拟路径</h2>
-			<div class="row-fluid section btns">
-				<a class="btn-flat default" onclick="get_gbm_data_path();"  >Start</a>
-			</div>
-
-            <!-- 随机路径折线图 -->
-            <div class="row-fluid chart">
-                <div class="span12">
-			        <div id="container_2" style="height: 400px; max-width: 800px;"></div>
-                </div>
-            </div>
-            <hr>
-			<!-- 随机路径折线图 -->
-
-            <!-- *********************************期权价值************************************** -->
-            <!-- 欧式看涨期权直方图 -->
-            <h2  class="sub_title"> 欧式看涨期权：期权价值</h2>
-			<div class="row-fluid section btns">
-				<a class="btn-flat default" onclick="set_call_values();" >Start</a>
-			</div>
-
-            <div class="row-fluid chart">
-                <div class="span12">
-			        <div id="container_3" style="height: 400px; max-width: 800px;"></div>
-                </div>
-            </div>
-			<hr>
-			<!-- 欧式看涨期权直方图 -->
-
-            <!-- 欧式看跌期权直方图 -->
-            <h2  class="sub_title"> 欧式看跌期权价值</h2>
-			<div class="row-fluid section btns">
-				<a class="btn-flat default" onclick="set_put_values();" >Start</a>
-			</div>
-
-            <div class="row-fluid chart">
-                <div class="span12">
-			        <div id="container_4" style="height: 400px; max-width: 800px;"></div>
-                </div>
-            </div>
-			<hr>
-			<!-- 欧式看跌期权直方图 -->
-
-            <!-- *********************************希腊字母************************************** -->
-            <!-- 期权 S 与 K 关系图 -->
-            <h2  class="sub_title"> 期权价格与标的现价 </h2>
-			<div class="row-fluid section btns">
-				<a class="btn-flat default" onclick="call_S_K();" >Start</a>
-			</div>
-
-            <div class="row-fluid chart">
-                <div class="span12">
-			        <div id="container_3_1" style="height: 400px; max-width: 800px;"></div>
-                </div>
-            </div>
-			<hr>
-			<!-- 欧式看涨期权 S 与 K 关系图 -->
+<!-- **************************************模拟路径**************************************** -->
+<h2  class="sub_title"> 随机获取10条模拟路径</h2>
+<div class="row-fluid section btns">
+    <a class="btn-flat default" onclick="get_gbm_data_path();"  >Start</a>
+</div>
 
 
-            <!-- 期权的 德尔塔-->
-            <h2  class="sub_title"> Delta与标的现价</h2>
-            <p>
-				Delta值（δ），又称对冲值，是衡量标的资产价格变动时，期权价格的变化幅度 。用公式表示：Delta=期权价格变化/标的资产现货价格变化。<br>
-                认购期权的Delta值为正数(范围在0和+1之间)，因为股价上升时，认购期权的价格也会上升。<br>
-                认沽期权的Delta值为负数(范围在-1和0之间)，因为股价上升时，认沽期权的价格即会下降。<br>
-                行权价等于现价的认购期权Delta值会接近0.5，而认沽期权的则接近-0.5。
-			</p>
-            <a href="https://baike.baidu.com/item/delta%E5%80%BC/9121372">百度百科： Delta值</a><br>
-			<br>
-
-			<div class="row-fluid section btns">
-				<a class="btn-flat default" onclick="call_S_D();" >Start</a>
-			</div>
-
-            <div class="row-fluid chart">
-                <div class="span12">
-			        <div id="container_3_2" style="height: 400px; max-width: 800px;"></div>
-                </div>
-            </div>
-			<hr>
-			<!-- 期权的 德尔塔 -->
+<!-- 随机路径折线图 -->
+<div class="row-fluid chart">
+    <div class="span12">
+        <div id="container_2" style="height: 400px; max-width: 800px;"></div>
+    </div>
+</div>
+<hr>
+<!-- 随机路径折线图 -->
 
 
-            <!-- 期权的 Vega-->
-            <h2  class="sub_title"> Vega与标的现价  </h2>
-            <p>
-				Vega值是期权价格关于标的资产价格波动率的敏感程度。从数学上来说，vega是期权价格关于标的资产价格波动率的一阶偏导数。
-			</p>
-            <a href="https://baike.baidu.com/item/vega%E5%80%BC/459510?fr=aladdin">百度百科： vega值</a><br>
-			<br>
+<!-- *********************************期权价值************************************** -->
+<!-- 欧式看涨期权直方图 -->
+<h2  class="sub_title"> 看涨期权价值</h2>
+<div class="row-fluid section btns">
+    <a class="btn-flat default" onclick="set_call_values();" >Start</a>
+</div>
 
-            <div class="row-fluid section btns">
-				<a class="btn-flat default" onclick="call_S_V();" >Start</a>
-			</div>
-
-            <div class="row-fluid chart">
-                <div class="span12">
-			        <div id="container_3_3" style="height: 400px; max-width: 800px;"></div>
-                </div>
-            </div>
-			<hr>
-			<!-- 期权的 Vega-->
+<div class="row-fluid chart">
+    <div class="span12">
+        <div id="container_3" style="height: 400px; max-width: 800px;"></div>
+    </div>
+</div>
+<hr>
+<!-- 欧式看涨期权直方图 -->
 
 
+<!-- 欧式看跌期权直方图 -->
+<h2  class="sub_title"> 看跌期权价值</h2>
+<div class="row-fluid section btns">
+    <a class="btn-flat default" onclick="set_put_values();" >Start</a>
+</div>
+
+<div class="row-fluid chart">
+    <div class="span12">
+        <div id="container_4" style="height: 400px; max-width: 800px;"></div>
+    </div>
+</div>
+<hr>
+<!-- 欧式看跌期权直方图 -->
+
+
+<!-- 期权 S 与 K 关系图 -->
+<h2  class="sub_title"> 期权价格与标的现价 </h2>
+<div class="row-fluid section btns">
+    <a class="btn-flat default" onclick="call_S_K();" >Start</a>
+</div>
+
+<div class="row-fluid chart">
+    <div class="span12">
+        <div id="container_3_1" style="height: 400px; max-width: 800px;"></div>
+    </div>
+</div>
+<hr>
+<!-- 欧式看涨期权 S 与 K 关系图 -->
+
+<!-- *********************************希腊字母************************************** -->
+<h2  class="title"> 希腊字母 </h2>
+<p>
+    对于一般的定价模型来讲，期权的价格是由以下因素决定：标的资产当前价格、波动率、无风险利率、期权到期时间以及行权价等。<br>
+    在这些变量中，除了行权价是常量外，其他任一因素的变化都会造成相应期权价值的不断变化，也给期权带来了投资风险。
+    希腊字母作为度量期权风险的金融指标，常常被专业投资者所关注。<br>
+    常用希腊字母包括：delta值、gamma值、theta值、vega值、rho值等。
+</p>
+<a href="https://xueqiu.com/7075816161/82528349">雪球： 希腊字母</a>
+<br>
+<hr />
+
+<!-- 期权的 德尔塔-->
+<h2  class="sub_title"> Delta与标的现价</h2>
+<p>
+    Delta值（δ），又称对冲值，是衡量标的资产价格变动时，期权价格的变化幅度 。用公式表示：Delta=期权价格变化/标的资产现货价格变化。<br>
+    认购期权的Delta值为正数(范围在0和+1之间)，因为股价上升时，认购期权的价格也会上升。<br>
+    认沽期权的Delta值为负数(范围在-1和0之间)，因为股价上升时，认沽期权的价格即会下降。<br>
+    行权价等于现价的认购期权Delta值会接近0.5，而认沽期权的则接近-0.5。
+</p>
+<a href="https://baike.baidu.com/item/delta%E5%80%BC/9121372">百度百科： Delta值</a><br>
+<br>
+
+<div class="row-fluid section btns">
+    <a class="btn-flat default" onclick="call_S_D();" >Start</a>
+</div>
+
+<div class="row-fluid chart">
+    <div class="span12">
+        <div id="container_3_2" style="height: 400px; max-width: 800px;"></div>
+    </div>
+</div>
+<hr>
+<!-- 期权的 德尔塔 -->
+
+
+<!-- 期权的 Gamma-->
+<h2  class="sub_title"> Gamma与标的现价  </h2>
+<p>
+    Gamma用来表示Delta值对于标的物价格变动的敏感程度，即期权价格变动相当于标的物价格变动的二阶导数。是常用期权风险指标中唯一的二阶导数。<br>
+    平值期权的Gamma值最大，深实值或深虚值期权的Gamma值则趋近于0。
+</p>
+<a href="https://baike.baidu.com/item/gamma%E5%80%BC/1410380">百度百科： Gamma值</a><br>
+<br>
+
+<div class="row-fluid section btns">
+    <a class="btn-flat default" onclick="call_S_G();" >Start</a>
+</div>
+
+<div class="row-fluid chart">
+    <div class="span12">
+        <div id="container_3_4" style="height: 400px; max-width: 800px;"></div>
+    </div>
+</div>
+<hr>
+<!-- 期权的 Vega-->
+
+
+<!-- 期权的 Vega-->
+<h2  class="sub_title"> Vega与标的现价  </h2>
+<p>
+    Vega值是期权价格关于标的资产价格波动率的敏感程度。从数学上来说，vega是期权价格关于标的资产价格波动率的一阶偏导数。
+</p>
+<a href="https://baike.baidu.com/item/vega%E5%80%BC/459510?fr=aladdin">百度百科： vega值</a><br>
+<br>
+
+<div class="row-fluid section btns">
+    <a class="btn-flat default" onclick="call_S_V();" >Start</a>
+</div>
+
+<div class="row-fluid chart">
+    <div class="span12">
+        <div id="container_3_3" style="height: 400px; max-width: 800px;"></div>
+    </div>
+</div>
+<hr>
+<!-- 期权的 Vega-->
+
+
+<!-- 期权的 Theta-->
+<h2  class="sub_title"> Theta与标的现价  </h2>
+<p>
+    Theta（θ）是用来测量时间变化对期权理论价值的影响。表示时间每经过一天，期权价值会损失多少。Theta=期权价格的变化/距离到期日时间的变化。
+</p>
+<a href="https://baike.baidu.com/item/theta%E5%80%BC/1410615">百度百科： Theta值</a><br>
+<br>
+
+<div class="row-fluid section btns">
+    <a class="btn-flat default" onclick="call_S_T();" >Start</a>
+</div>
+
+<div class="row-fluid chart">
+    <div class="span12">
+        <div id="container_3_5" style="height: 400px; max-width: 800px;"></div>
+    </div>
+</div>
+<hr>
+<!-- 期权的 Theta-->
+
+
+<!-- 期权的 Rho-->
+<h2  class="sub_title"> Rho与标的现价  </h2>
+<p>
+    Rho是指期权价格对无风险利率变化的敏感程度，Rho=期权价格的变化/无风险利率的变化。
+</p>
+<a href="https://baike.baidu.com/item/rho%E5%80%BC/3650063">百度百科： Rho值</a><br>
+<br>
+
+<div class="row-fluid section btns">
+    <a class="btn-flat default" onclick="call_S_R();" >Start</a>
+</div>
+
+<div class="row-fluid chart">
+    <div class="span12">
+        <div id="container_3_6" style="height: 400px; max-width: 800px;"></div>
+    </div>
+</div>
+<hr>
+<!-- 期权的 Rho-->
+
+
+<!-- *********************************自由组合************************************** -->
+<!-- 自由组合-->
+<h2  class="title"> 自选组合 </h2>
+<p>
+    选择标的资产现价、期权价值及希腊字母，作为x轴及y轴，绘制图表。
+</p>
+<div class="field-box">
+    <span style="font-size:15px">X轴数据： </span>
+        <div class="ui-select">
+            <select id="free_chart_x">
+                <option>Stock Present Price</option>
+                <option>Call Option Value</option>
+                <option>Call Delta</option>
+                <option>Call Gamma</option>
+                <option>Call Vega</option>
+                <option>Call Theta</option>
+                <option>Call Rho</option>
+                <option>Put Option Value</option>
+                <option>Put Delta</option>
+                <option>Put Gamma</option>
+                <option>Put Vega</option>
+                <option>Put Theta</option>
+                <option>Put Rho</option>
+            </select>
+    </div>
+</div>
+<br>
+<div class="field-box">
+    <span style="font-size:15px">Y轴数据： </span>
+        <div class="ui-select">
+            <select id="free_chart_y">
+                <option>Stock Present Price</option>
+                <option>Call Option Value</option>
+                <option>Call Delta</option>
+                <option>Call Gamma</option>
+                <option>Call Vega</option>
+                <option>Call Theta</option>
+                <option>Call Rho</option>
+                <option>Put Option Value</option>
+                <option>Put Delta</option>
+                <option>Put Gamma</option>
+                <option>Put Vega</option>
+                <option>Put Theta</option>
+                <option>Put Rho</option>
+            </select>
+    </div>
+</div>
+<br>
+
+<div class="row-fluid section btns">
+    <a class="btn-flat default" onclick="free_chart();" >Start</a>
+</div>
+
+<div class="row-fluid chart">
+    <div class="span12">
+        <div id="container_5" style="height: 400px; max-width: 800px;"></div>
+    </div>
+</div>
+<hr>
+
+<!-- 自由组合-->
+
+    
 
 <!-- 本页专用 -->
 <script type="text/javascript" charset="utf-8" src="{% static 'app_options/js/options_gbm.js' %}" ></script>
