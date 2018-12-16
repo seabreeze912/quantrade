@@ -19,7 +19,6 @@
 <script src="https://img.hcharts.cn/highcharts/modules/histogram-bellcurve.js"></script>
 <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
 
-
 {% endblock linkscript %}
 
 
@@ -31,6 +30,7 @@
 </p>
 <hr />
 
+
 <!-- **************************************GBM模拟底层资产************************************** -->
 <h2  class="sub_title"> 期权类型</h2>
 <div class="ui-select">
@@ -41,10 +41,23 @@
 </div>
 <br /><br />
 
+
+<!-- **************************************开始获取数据按钮************************************** -->
 <h2  class="sub_title"> 设置参数</h2>
-<div class="row-fluid section btns">
+<div id="start_get_data_button" class="row-fluid section btns">
     <a class="btn-flat default" onclick="api_gbm_data();" >Start</a>
+    <img src="{% static 'app_options/img/loaders/11.gif' %} " style="display: none">
 </div>
+<!-- **************************************开始获取数据按钮************************************** -->
+
+
+<!-- **************************************成功获取后的警告框************************************** -->
+<div id="get_data_success_alert" class="alert alert-success" style="display: none">
+    <a href="" class="close" data-dismiss="alert">&times;</a>
+    <strong>成功获取模拟数据</strong>。
+</div>
+<!-- **************************************成功获取后的警告框************************************** -->
+
 
 <form id="gbm_params" method="post">
     {% csrf_token %}

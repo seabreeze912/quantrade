@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7cb17bea-aec2-4954-b0b8-1d01e3e5b346" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_options/geometric_brownian_motion.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_options/geometric_brownian_motion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_options/valuation_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_options/valuation_class.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_options/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_options/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/app_options/css/compiled/options_chart.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/app_options/css/compiled/options_chart.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/app_options/js/options_gbm.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app_options/js/options_gbm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/app_index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/app_index/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/app_options/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/app_options/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/app_options/options_gbm.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/app_options/options_gbm.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,8 +24,8 @@
       <file leaf-file-name="options_gbm.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/app_options/js/options_gbm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-290">
-              <caret line="792" lean-forward="true" selection-start-line="792" selection-end-line="792" />
+            <state relative-caret-position="-13919">
+              <caret line="68" column="55" selection-start-line="68" selection-start-column="55" selection-end-line="68" selection-end-column="55" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -38,14 +33,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="options_gbm.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/app_options/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="337">
+              <caret line="125" column="29" selection-start-line="125" selection-start-column="29" selection-end-line="125" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="options_gbm.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/app_options/options_gbm.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6642">
-              <caret line="369" column="4" selection-start-line="369" selection-start-column="4" selection-end-line="369" selection-end-column="4" />
+            <state relative-caret-position="-5711">
+              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
               <folding>
-                <element signature="e#8980#9002#0#HTML" expanded="true" />
-                <element signature="e#9350#9372#0#HTML" expanded="true" />
+                <element signature="e#1852#1873#0#HTML" expanded="true" />
+                <element signature="e#2120#2141#0#HTML" expanded="true" />
+                <element signature="e#1868#1875#1#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,8 +59,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app_options/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6570">
-              <caret line="365" column="49" selection-start-line="365" selection-start-column="49" selection-end-line="365" selection-end-column="49" />
+            <state relative-caret-position="-113">
+              <caret line="301" column="17" selection-start-line="301" selection-start-column="17" selection-end-line="301" selection-end-column="17" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -66,8 +71,8 @@
       <file leaf-file-name="valuation_mcs_american.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app_options/valuation_mcs_american.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="9" column="46" lean-forward="true" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
+            <state relative-caret-position="126">
+              <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
               <folding>
                 <element signature="e#54#72#0" expanded="true" />
               </folding>
@@ -78,8 +83,8 @@
       <file leaf-file-name="geometric_brownian_motion.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app_options/geometric_brownian_motion.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="34" column="31" lean-forward="true" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+            <state relative-caret-position="558">
+              <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -88,7 +93,7 @@
         <entry file="file://$PROJECT_DIR$/static/app_options/css/compiled/options_chart.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="144">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -96,8 +101,8 @@
       <file leaf-file-name="valuation_class.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app_options/valuation_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="74" column="48" lean-forward="true" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
+            <state relative-caret-position="1314">
+              <caret line="74" column="48" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
               <folding>
                 <element signature="e#46#61#0" expanded="true" />
               </folding>
@@ -199,14 +204,14 @@
         <option value="$PROJECT_DIR$/app_options/valuation_mcs_american.py" />
         <option value="$PROJECT_DIR$/app_options/valuation_mcs_european.py" />
         <option value="$PROJECT_DIR$/app_options/simulation_class.py" />
-        <option value="$PROJECT_DIR$/templates/app_options/index.html" />
         <option value="$PROJECT_DIR$/templates/app_index/index.html" />
         <option value="$PROJECT_DIR$/app_options/geometric_brownian_motion.py" />
         <option value="$PROJECT_DIR$/app_options/valuation_class.py" />
         <option value="$PROJECT_DIR$/static/app_options/css/compiled/options_chart.css" />
         <option value="$PROJECT_DIR$/app_options/views.py" />
-        <option value="$PROJECT_DIR$/static/app_options/js/options_gbm.js" />
         <option value="$PROJECT_DIR$/templates/app_options/options_gbm.html" />
+        <option value="$PROJECT_DIR$/static/app_options/js/options_gbm.js" />
+        <option value="$PROJECT_DIR$/templates/app_options/index.html" />
       </list>
     </option>
   </component>
@@ -278,6 +283,13 @@
               <item name="quantrade" type="b2602c69:ProjectViewProjectNode" />
               <item name="quantrade" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="app_index" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="quantrade" type="b2602c69:ProjectViewProjectNode" />
+              <item name="quantrade" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="app_options" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -285,15 +297,7 @@
               <item name="quantrade" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="app_options" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="quantrade" type="b2602c69:ProjectViewProjectNode" />
-              <item name="quantrade" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="app_options" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="compiled" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="quantrade" type="b2602c69:ProjectViewProjectNode" />
@@ -430,7 +434,7 @@
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.3280757" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.329653" />
       <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32886437" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2451923" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24919872" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -645,17 +649,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/app_options/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1085">
-          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app_options/valuation_class.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="74" column="48" lean-forward="true" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
+        <state relative-caret-position="1314">
+          <caret line="74" column="48" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
           <folding>
             <element signature="e#46#61#0" expanded="true" />
           </folding>
@@ -664,22 +661,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app_options/geometric_brownian_motion.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="34" column="31" lean-forward="true" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+        <state relative-caret-position="558">
+          <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/app_options/css/compiled/options_chart.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app_options/valuation_mcs_american.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="9" column="46" lean-forward="true" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
+        <state relative-caret-position="126">
+          <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
           <folding>
             <element signature="e#54#72#0" expanded="true" />
           </folding>
@@ -688,8 +685,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app_options/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6570">
-          <caret line="365" column="49" selection-start-line="365" selection-start-column="49" selection-end-line="365" selection-end-column="49" />
+        <state relative-caret-position="-113">
+          <caret line="301" column="17" selection-start-line="301" selection-start-column="17" selection-end-line="301" selection-end-column="17" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -698,8 +695,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/app_options/js/options_gbm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-290">
-          <caret line="792" lean-forward="true" selection-start-line="792" selection-end-line="792" />
+        <state relative-caret-position="-13919">
+          <caret line="68" column="55" selection-start-line="68" selection-start-column="55" selection-end-line="68" selection-end-column="55" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -708,12 +705,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/app_options/options_gbm.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6642">
-          <caret line="369" column="4" selection-start-line="369" selection-start-column="4" selection-end-line="369" selection-end-column="4" />
+        <state relative-caret-position="-5711">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
           <folding>
-            <element signature="e#8980#9002#0#HTML" expanded="true" />
-            <element signature="e#9350#9372#0#HTML" expanded="true" />
+            <element signature="e#1852#1873#0#HTML" expanded="true" />
+            <element signature="e#2120#2141#0#HTML" expanded="true" />
+            <element signature="e#1868#1875#1#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/app_options/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="125" column="29" selection-start-line="125" selection-start-column="29" selection-end-line="125" selection-end-column="29" />
         </state>
       </provider>
     </entry>

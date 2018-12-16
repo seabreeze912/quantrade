@@ -1,5 +1,12 @@
 // ******************************************************************************************************
 // 绘制直方图
+
+
+$(".close").click(function(){
+        $("#myAlert").alert();
+    });
+
+
 var chart1 = null;
 
 $(document).ready(function() {
@@ -54,7 +61,15 @@ var s_list,
     call_p_list,call_d_list,call_v_list,call_g_list,call_t_list,call_r_list,
     put_p_list,put_d_list,put_v_list,put_g_list,put_t_list,put_r_list = []
 
+//$("#id").show()表示display:block,
+// $("#id").hide()表示display:none;
+// $("#id").toggle()切换元素的可见状态
+
 function api_gbm_data() {
+    $('#get_data_success_alert')[0].style.display='none';
+    $('#start_get_data_button img')[0].style.display='block';
+    $('#start_get_data_button a')[0].style.display='none';
+
     var pricing_date_y = $('#pricing_date_y').val();
     var pricing_date_m = $('#pricing_date_m').val();
     var pricing_date_d = $('#pricing_date_d').val();
@@ -79,10 +94,12 @@ function api_gbm_data() {
 
     var option_model = $('#option_gbm_option_model').val();
 
+
+
     $.ajax({
         type : 'post',
         url: '/options/gbm_json/',
-        async:false,
+        async:true,
         data: {
             pricing_date_y: pricing_date_y,
             pricing_date_m: pricing_date_m,
@@ -106,6 +123,7 @@ function api_gbm_data() {
         },
         dataType : 'json',
         success: function(data) {
+            $('#get_data_success_alert')[0].style.display='none';
             chart1.series[1].setData(data.instrument_values);
             chart2.xAxis[0].update({categories: data.time_list});
 
@@ -131,7 +149,11 @@ function api_gbm_data() {
             put_t_list = data.put_t_list;
             put_r_list = data.put_r_list;
 
-            console.log(option_model)
+            console.log(option_model);
+
+            $('#start_get_data_button img')[0].style.display='none';
+            $('#start_get_data_button a')[0].style.display='inline-block';
+            $('#get_data_success_alert')[0].style.display='block';
 
         },
         cache: false
@@ -838,7 +860,7 @@ function free_chart() {
     for (var i=0;i<len;i++){
         combin_list.push([x_value[i], y_value[i]]);
     };
-    console.log(combin_list);
+    // console.log(combin_list);
 
     chart5.series[0].setData(combin_list);
     chart5.xAxis[0].update({
