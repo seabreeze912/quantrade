@@ -4,6 +4,68 @@
 {% block linkscript %}
     <title>Home</title>
     <!-- this page specific styles -->
-    <link rel="stylesheet" href="{% static 'app_options/css/compiled/index.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'app_options/css/compiled/style.css' %}" type="text/css" media="screen" />
 
 {% endblock linkscript %}
+
+
+{% block base %}
+	<!-- services section start -->
+	<section id="services" class="services padding-120 bg-color">
+		<div class="section-header text-center">
+		  <h3>Our Services</h3>
+		  <p><i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in facilisis ex, vitae maximus diam. Maecenas nisl dui.</i></p>
+		</div>
+		<div class="service-items">
+		  <div class="row">
+
+			<div class="col-md-4 col-sm-6 col-xs-12">
+				<div class="service-item">
+				<span><i class="fa fa-bar-chart"></i></span>
+				<a href="/fin_mode/">
+				<h4>Financial Modeling</h4>
+				</a>
+				<p>Interdum et malesuada fames ac ante ipsum primis faucib. Suspendisse volutpat porta felises ut cursus.</p>
+				</div><!-- service-item -->
+			</div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+			  <div class="service-item">
+				<span><i class="fa fa-book" aria-hidden="true"></i></span>
+				<h4>Financial Risk Manager</h4>
+				<p>Interdum et malesuada fames ac ante ipsum primis faucib. Suspendisse volutpat porta felises ut cursus.</p>
+			  </div><!-- service-item -->
+			</div>
+
+			<div class="col-md-4 col-sm-6 col-xs-12">
+			  <div class="service-item">
+				<span><i class="fa fa-code" aria-hidden="true"></i></span>
+				<h4>Machine Learning</h4>
+				<p>Interdum et malesuada fames ac ante ipsum primis faucib. Suspendisse volutpat porta felises ut cursus.</p>
+			  </div><!-- service-item -->
+			</div>
+
+			<div class="col-md-4 col-sm-6 col-xs-12">
+			  <div class="service-item">
+				<span><i class="fa fa-paw" aria-hidden="true"></i></span>
+				<h4>Web Crawler</h4>
+				<p>Interdum et malesuada fames ac ante ipsum primis faucib. Suspendisse volutpat porta felises ut cursus.</p>
+			  </div><!-- service-item -->
+			</div>
+
+			<div class="col-md-4 col-sm-6 col-xs-12">
+			  <div class="service-item">
+				<span><i class="fa fa-photo" aria-hidden="true"></i></span>
+				<h4>Photography</h4>
+				<p>Interdum et malesuada fames ac ante ipsum primis faucib. Suspendisse volutpat porta felises ut cursus.</p>
+			  </div><!-- service-item -->
+			</div>
+
+		  </div><!-- row -->
+		</div><!-- service-items -->
+	</section>
+	<!-- services section end -->
+
+
+<!-- Blog section end -->
+{% endblock base %}

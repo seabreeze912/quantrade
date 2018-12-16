@@ -25,7 +25,12 @@ from .valuation_mcs_american import valuation_mcs_american
 # **********************************************************************************************************************
 # home页
 def home(request):
-    return render(request, 'app_options/index.html', )
+    return render(request, 'app_options/home.html', )
+
+
+# 金融建模主页
+def fin_mode_home(request):
+    return render(request, 'app_options/fin_mode.html', )
 
 
 # **********************************************************************************************************************

@@ -1,22 +1,21 @@
-body,td,th, #pad-wrapper {font-family: KaiTi ,'微软雅黑',sans-serif; font-size: 15px;color: #1d1007; line-height:24px}
+body {
+	font-family:  'Lora',  “楷体”, sans-serif;
+}
 
 /* 标题部分 */
 #pad-wrapper h1.title{
-	font-size: 30px; 
-	font-family: KaiTi ,'微软雅黑',sans-serif;
+	font-size: 30px;
 	margin-bottom: 25px;
 }
 
 /* 次标题部分 */
 #pad-wrapper p{
 	font-size: 15px;
-	font-family: KaiTi ,'微软雅黑',sans-serif;
 	margin-bottom: 20px;
 }
 
 #pad-wrapper h2.sub_title{
-	font-size: 20px; 
-	font-family: KaiTi ,'微软雅黑',sans-serif;
+	font-size: 20px;
 	margin-bottom: 25px;
 }
 

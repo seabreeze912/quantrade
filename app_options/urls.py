@@ -21,6 +21,8 @@ from . import views
 urlpatterns = [
     url(r'^home/$', views.home),
 
+    url(r'^fin_mode/$', views.fin_mode_home),
+
     url(r'^options_gbm/$', views.options_gbm),
     url(r'^options/gbm_json/$', views.gbm_json),
 

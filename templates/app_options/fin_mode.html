@@ -1,0 +1,52 @@
+{% extends 'app_options/index.html' %}
+{% load static from staticfiles %}
+
+{% block linkscript %}
+    <title>Financial Modeling</title>
+    <!-- this page specific styles -->
+    <link rel="stylesheet" href="{% static 'app_options/css/compiled/style.css' %}" type="text/css" media="screen" />
+
+{% endblock linkscript %}
+
+
+{% block base %}
+	<!-- services section start -->
+	<section id="services" class="services padding-120 bg-color">
+		<div class="section-header text-center">
+		  <h3>Financial Modeling</h3>
+		  <p><i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in facilisis ex, vitae maximus diam. Maecenas nisl dui.</i></p>
+		</div>
+		<div class="service-items">
+		  <div class="row">
+			<div class="col-md-4 col-sm-6 col-xs-12">
+				<div class="service-item">
+				<span><i class="fa fa-bar-chart"></i></span>
+				<a href="/options_gbm/">
+				<h4>GBM Model</h4>
+				</a>
+				<p>基于几何布朗运动，采取蒙特卡洛模拟的方式，对欧式、美式期权进行估值。</p>
+				</div><!-- service-item -->
+			</div>
+		  </div><!-- row -->
+            <hr>
+
+            <div class="row">
+
+			<div class="col-md-4 col-sm-6 col-xs-12">
+				<div class="service-item">
+				<span><i class="fa fa-bar-chart"></i></span>
+				<a href="#">
+				<h4>--</h4>
+				</a>
+				<p>Interdum et malesuada fames ac ante ipsum primis faucib. Suspendisse volutpat porta felises ut cursus.</p>
+				</div><!-- service-item -->
+			</div>
+
+		  </div><!-- row -->
+		</div><!-- service-items -->
+	</section>
+	<!-- services section end -->
+
+
+<!-- Blog section end -->
+{% endblock base %}

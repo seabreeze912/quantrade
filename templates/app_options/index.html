@@ -8,11 +8,12 @@
 
     <!-- bootstrap -->
     <link href="{% static 'app_options/css/bootstrap/bootstrap.css' %}" rel="stylesheet" />
+    <link href="{% static 'app_options/css/bootstrap/bootstrap.min.css' %}" rel="stylesheet" />
     <link href="{% static 'app_options/css/bootstrap/bootstrap-responsive.css' %}" rel="stylesheet" />
     <link href="{% static 'app_options/css/bootstrap/bootstrap-overrides.css' %}" type="text/css" rel="stylesheet" />
 
     <!-- libraries -->
-    <link href="{% static 'app_options/css/lib/font-awesome.css' %}" type="text/css" rel="stylesheet" />
+    <link href="{% static 'app_options/css/font-awesome.min.css' %}" type="text/css" rel="stylesheet" />
     <link href="{% static 'app_options/css/lib/jquery-ui-1.10.2.custom.css' %}" rel="stylesheet" type="text/css" />
 
     <!-- global styles -->
@@ -64,7 +65,7 @@
 			<ul id="dashboard-menu">
 					<li>
 							<a href="/home/">
-									<i class="icon-home"></i>
+									<i class="fa fa-home"></i>
 									<span>Home</span>
 							</a>
 					</li>   
@@ -72,22 +73,60 @@
 					<li>
 							<a class="dropdown-toggle" href="#">
 							<!-- <a href="chart-showcase.html"> -->
-									<i class="icon-signal"></i>
-									<span>Charts</span>
-									<i class="icon-chevron-down"></i>
+									<i class="fa fa-bar-chart"></i>
+									<span>FM</span>
 							</a>
-							
 							<ul class="submenu">
-									<li><a href="/options_gbm/">期权估值</a></li>
+									<li><a href="/options_gbm/">Options</a></li>
 									<li><a href="new-user.html">--</a></li>
 									<li><a href="user-profile.html">--</a></li>
 							</ul>
 					</li>
-					
+
+					<li>
+							<a class="dropdown-toggle" href="#">
+							<!-- <a href="chart-showcase.html"> -->
+									<i class="fa fa-book"></i>
+									<span>FRM</span>
+							</a>
+							<ul class="submenu">
+									<li><a href="/options_gbm/">--</a></li>
+									<li><a href="new-user.html">--</a></li>
+									<li><a href="user-profile.html">--</a></li>
+							</ul>
+					</li>
+
+					<li>
+							<a class="dropdown-toggle" href="#">
+							<!-- <a href="chart-showcase.html"> -->
+									<i class="fa fa-code"></i>
+									<span>ML</span>
+							</a>
+							<ul class="submenu">
+									<li><a href="/options_gbm/">--</a></li>
+									<li><a href="new-user.html">--</a></li>
+									<li><a href="user-profile.html">--</a></li>
+							</ul>
+					</li>
+
+
+                    <li>
+							<a class="dropdown-toggle" href="#">
+							<!-- <a href="chart-showcase.html"> -->
+									<i class="fa fa-paw"></i>
+									<span>Crawler</span>
+							</a>
+							<ul class="submenu">
+									<li><a href="/options_gbm/">--</a></li>
+									<li><a href="new-user.html">--</a></li>
+									<li><a href="user-profile.html">--</a></li>
+							</ul>
+					</li>
+
 					<li>
 							<a href="gallery.html">
-									<i class="icon-picture"></i>
-									<span>Gallery</span>
+									<i class="fa fa-photo"></i>
+									<span>Photo</span>
 							</a>
 					</li>
 				
@@ -99,7 +138,7 @@
 	<!-- main container -->
 
 <div class="content">
-	<div class="container-fluid">
+	<div class="container">
         <div id="pad-wrapper">
 
     {% block base %}
